@@ -11,13 +11,6 @@ class Router {
 
         onload = (event) => this.changePage();
         onhashchange = (event) => this.changePage();
-
-        addEventListener('click', (event) => {
-            event.preventDefault();
-            this.loadPage(event.target.hash.replace('#', '') + '.html').then(data => {
-                this.app.innerHTML = data;
-            });
-        });
     }
 
     changePage() {
@@ -86,7 +79,7 @@ class HTTP {
 
 class Views {
     constructor() {
-
+        this.bindInputs();
     }
     generateViews(views) {
         views.forEach(view => {
@@ -95,5 +88,31 @@ class Views {
     }
     load(view) {
         return this[`${view}`];
+    }
+
+    bindInputs() {
+        // template to javascript input binding
+        setTimeout(() => {
+            this.bindElements('input');
+            this.bindElements('select');
+            this.bindElements('textarea');
+           
+        }, 1000);
+    }
+
+    bindElements(type) {
+        let inputs = document.getElementsByTagName(type);
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].oninput = (event) => {
+               app[event.target.name]  = event.target.value;
+               try {
+                   let bindElement = document.querySelector(`[bind=${event.target.name}]`);
+                   if(bindElement) {
+                       bindElement.innerHTML = event.target.value;
+                   }
+               } catch(ex) {
+               }
+            };
+        }
     }
 }
