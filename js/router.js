@@ -9,7 +9,7 @@ class Router {
 
     init() {
 
-        onload = (event) => this.changePage();
+        onload = (event) => { this.changePage(); views.bindInputs()}
         onhashchange = (event) => { this.changePage(); views.bindInputs(); };
     }
 
