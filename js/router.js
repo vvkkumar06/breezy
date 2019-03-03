@@ -53,11 +53,10 @@ class Router {
     }
 
     loadView(view) {
-        this.loadPage(view +'.html')
-        .then(data => {
-            document.getElementById(view).innerHTML = data;
-        })
-        return `<div id=${view}></div>`;
+        this.loadPage(view + '.html')
+            .then(data => {
+                document.getElementById(view).innerHTML = data;
+            });
     }
 }
 
@@ -82,5 +81,19 @@ class HTTP {
         xmlHttp.open("POST", url, true); // true for asynchronous 
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(body);
+    }
+}
+
+class Views {
+    constructor() {
+
+    }
+    generateViews(views) {
+        views.forEach(view => {
+            this[`${view}`] = `<div id="${view}"></div>`;
+        });
+    }
+    load(view) {
+        return this[`${view}`];
     }
 }

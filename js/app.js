@@ -1,5 +1,6 @@
 class App {
     constructor() {
+        this.views();
         this.routes();
     }
 
@@ -10,9 +11,15 @@ class App {
         ]);
     }
 
+    views() {
+        views.generateViews([
+            'header'
+        ]);
+    }
     view(view) {
         this.router.loadView(view);
+        return views.load(view);
     }
 }
-
+var views = new Views();
 var app = new App();
