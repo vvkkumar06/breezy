@@ -10,7 +10,7 @@ class Router {
     init() {
 
         onload = (event) => this.changePage();
-        onhashchange = (event) => this.changePage();
+        onhashchange = (event) => { this.changePage(); views.bindInputs(); };
     }
 
     changePage() {
@@ -79,7 +79,6 @@ class HTTP {
 
 class Views {
     constructor() {
-        this.bindInputs();
     }
     generateViews(views) {
         views.forEach(view => {
@@ -93,10 +92,10 @@ class Views {
     bindInputs() {
         // template to javascript input binding
         setTimeout(() => {
+            this.bindCheckBox();
             this.bindElements('input');
             this.bindElements('select');
             this.bindElements('textarea');
-           
         }, 1000);
     }
 
@@ -109,6 +108,21 @@ class Views {
                    let bindElement = document.querySelector(`[bind=${event.target.name}]`);
                    if(bindElement) {
                        bindElement.innerHTML = event.target.value;
+                   }
+               } catch(ex) {
+               }
+            };
+        }
+    }
+    bindCheckBox(){
+        let inputs = document.querySelectorAll('input[type=checkbox]');
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].onchange = (event) => {
+               app[event.target.name]  = event.srcElement.checked;
+               try {
+                   let bindElement = document.querySelector(`[bind=${event.target.name}]`);
+                   if(bindElement) {
+                       bindElement.innerHTML = event.srcElement.checked;
                    }
                } catch(ex) {
                }

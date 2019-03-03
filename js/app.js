@@ -18,8 +18,8 @@ class App {
     // e.g. header for views/header.html
     views() {
         views.generateViews([
-            'header',
-            'footer'
+           'userForm',
+           'userDetail'
         ]);
     }
     // Do not change this
@@ -30,7 +30,7 @@ class App {
     }
 }
 const views = new Views();
-var app = new App();
+const app = new App();
 
 
 
