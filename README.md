@@ -1,10 +1,10 @@
-﻿# Breezy 
+﻿# iBreezy 
 
 Light weight single page application framework. [Demo](https://vvkkumar06.github.io/iBreezy.js)
 
 ## Getting Started
 
-Add breezy.js file in your index.html.
+Add iBreezy.js file in your index.html.
 
 ### Prerequisites
 
