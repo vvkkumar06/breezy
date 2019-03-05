@@ -1,6 +1,6 @@
 ﻿# Breezy 
 
-Light weight single page application framework. [Demo](https://vvkkumar06.github.io/breezy)
+Light weight single page application framework. [Demo](https://vvkkumar06.github.io/iBreezy.js)
 
 ## Getting Started
 
