@@ -1,3 +1,6 @@
+/**
+ * @Author Vivek Kumar
+ */
 class Router {
     constructor(routes) {
         this.page = '';
